@@ -1,9 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  cacheComponents: true,
-  partialPrefetching: true,
-
   output: "export",
   trailingSlash: true,
   images: {
@@ -11,20 +8,6 @@ const nextConfig: NextConfig = {
   },
 
   allowedDevOrigins: ['127.0.0.1'],
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/en",
-        permanent: false,
-      },
-      {
-        source: "/contact",
-        destination: "/en/contact",
-        permanent: false,
-      },
-    ];
-  },
   turbopack: {
     rules: {
       "*.css": {
