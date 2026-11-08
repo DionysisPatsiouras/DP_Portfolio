@@ -16,7 +16,7 @@ export const translations = {
     sendEmail: "Send an email",
     github: "GitHub profile",
     linkedin: "LinkedIn profile",
-    pageTitle: "DP_Portfolio | Dionysis Patsiouras",
+    pageTitle: "Dionysis Patsiouras",
     pageDescription: "Portfolio of Dionysis Patsiouras, full-stack developer.",
     about: {
       specialties: ["WEB", "DESKTOP", "MOBILE", "APIs", "BUSINESS SOLUTIONS"],
