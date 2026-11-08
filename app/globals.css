@@ -383,6 +383,13 @@ summary:focus-visible {
   letter-spacing: -0.025em;
 }
 
+.about-role {
+  margin: 17px 0 0;
+  font-family: var(--font-federo), Georgia, serif;
+  font-size: clamp(20px, 2.2vw, 28px);
+  letter-spacing: 0.08em;
+}
+
 .page-title-group {
   position: relative;
 }
@@ -417,7 +424,7 @@ summary:focus-visible {
 }
 
 .about-specialties {
-  margin: 17px 0 0;
+  margin: 13px 0 0;
   font-family: "Courier New", Courier, monospace;
   font-size: 12px;
   line-height: 1.3;
@@ -587,7 +594,7 @@ summary:focus-visible {
   }
 
   .about-specialties {
-    margin-top: 20px;
+    margin-top: 16px;
     font-size: 12px;
     line-height: 1.5;
     white-space: normal;
@@ -818,7 +825,7 @@ html[lang="el"] .contact-section {
 
 .contact-form {
   width: 100%;
-  margin-top: 91px;
+  margin-top: 36px;
 }
 
 .contact-field-row {
@@ -949,7 +956,7 @@ html[lang="el"] .contact-section {
   }
 
   .contact-form {
-    margin-top: 72px;
+    margin-top: 36px;
   }
 
   .contact-input-shell input,
@@ -1011,7 +1018,7 @@ html[lang="el"] .contact-section {
   --project-card-width: min(60vw, 520px);
   --project-card-height: min(32.6vw, 283px);
   width: 100%;
-  margin-top: clamp(64px, 9svh, 92px);
+  margin-top: 36px;
 }
 
 .projects-stage {
@@ -1225,7 +1232,7 @@ html[lang="el"] .contact-section {
 
 @media (max-height: 650px) and (min-width: 701px) {
   .projects-section { padding-top: 60px; }
-  .projects-carousel { margin-top: 30px; }
+  .projects-carousel { margin-top: 24px; }
   .projects-controls { margin-top: 15px; }
 }
 
@@ -1244,7 +1251,7 @@ html[lang="el"] .contact-section {
   .projects-carousel {
     --project-card-width: 82vw;
     --project-card-height: 44.5vw;
-    margin-top: clamp(70px, 11svh, 100px);
+    margin-top: 36px;
   }
 
   .project-slide[data-position="-1"] { left: 12%; }
@@ -1322,7 +1329,7 @@ html[lang="el"] .contact-section {
 
 .services-scroll-frame {
   position: relative;
-  margin-top: 88px;
+  margin-top: 36px;
 }
 
 .services-list {
@@ -1462,7 +1469,7 @@ html[lang="el"] .contact-section {
   }
 
   .services-scroll-frame {
-    margin-top: 86px;
+    margin-top: 36px;
   }
 
   .services-list {

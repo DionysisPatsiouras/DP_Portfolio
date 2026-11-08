@@ -16,7 +16,7 @@ export const translations = {
     sendEmail: "Send an email",
     github: "GitHub profile",
     linkedin: "LinkedIn profile",
-    pageTitle: "Dionysis Patsiouras",
+    pageTitle: "Dionysis Patsiouras | Software Engineer",
     pageDescription: "Portfolio of Dionysis Patsiouras, full-stack developer.",
     about: {
       specialties: ["WEB", "DESKTOP", "MOBILE", "APIs", "BUSINESS SOLUTIONS"],
@@ -32,7 +32,7 @@ export const translations = {
       "I build thoughtful interfaces and reliable applications, from the first idea through implementation.",
     servicesText: "Full-stack development for modern web experiences.",
     services: {
-      intro: "What I can build for you.",
+      intro: "From websites and apps to integrations, I build software around your needs.",
       scrollLabel: "Services list",
       previousLabel: "Scroll to previous service",
       nextLabel: "Scroll to next service",
@@ -58,7 +58,7 @@ export const translations = {
     projectsText: "Explore selected work and source code on GitHub.",
     projectsLink: "View GitHub projects",
     projects: {
-      intro: "Explore my projects",
+      intro: "Selected websites I've designed and built, from portfolios to business sites.",
       carouselLabel: "Selected projects",
       openLabel: "Open project",
       selectLabel: "Show project",
@@ -108,7 +108,7 @@ export const translations = {
     sendEmail: "Αποστολή email",
     github: "Προφίλ στο GitHub",
     linkedin: "Προφίλ στο LinkedIn",
-    pageTitle: "DP_Portfolio | Διονύσης Πατσιούρας",
+    pageTitle: "Διονύσης Πατσιούρας | Software Engineer",
     pageDescription: "Το portfolio του Διονύση Πατσιούρα, full-stack developer.",
     about: {
       specialties: ["WEB", "DESKTOP", "MOBILE", "APIs", "BUSINESS SOLUTIONS"],
@@ -124,7 +124,7 @@ export const translations = {
       "Δημιουργώ προσεγμένα περιβάλλοντα και αξιόπιστες εφαρμογές, από την αρχική ιδέα έως την υλοποίηση.",
     servicesText: "Ανάπτυξη σύγχρονων διαδικτυακών εφαρμογών από άκρη σε άκρη.",
     services: {
-      intro: "Τι μπορώ να δημιουργήσω για εσάς.",
+      intro: "Από ιστοσελίδες και εφαρμογές έως διασυνδέσεις, δημιουργώ λογισμικό στα μέτρα σας.",
       scrollLabel: "Λίστα υπηρεσιών",
       previousLabel: "Κύλιση στην προηγούμενη υπηρεσία",
       nextLabel: "Κύλιση στην επόμενη υπηρεσία",
@@ -150,7 +150,7 @@ export const translations = {
     projectsText: "Δείτε επιλεγμένα έργα και τον κώδικά τους στο GitHub.",
     projectsLink: "Δείτε τα έργα στο GitHub",
     projects: {
-      intro: "Δείτε τα έργα μου",
+      intro: "Επιλεγμένα έργα που σχεδίασα και υλοποίησα, από portfolio έως ιστοσελίδες επιχειρήσεων.",
       carouselLabel: "Επιλεγμένα έργα",
       openLabel: "Άνοιγμα έργου",
       selectLabel: "Εμφάνιση έργου",

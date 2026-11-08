@@ -16,6 +16,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <span className="about-name-last">PATSIOURAS</span>
         </h1>
 
+        <p className="about-role">SOFTWARE ENGINEER</p>
         <p className="about-specialties">{text.specialties.join(" / ")}</p>
 
         <div className="about-actions">
