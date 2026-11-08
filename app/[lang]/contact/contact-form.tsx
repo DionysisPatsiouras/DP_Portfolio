@@ -3,6 +3,8 @@
 import { useState, type FormEvent } from "react";
 import type { translations } from "../translations";
 
+import emailjs from "@emailjs/browser";
+
 type ContactText = (typeof translations)["en"]["contact"] | (typeof translations)["el"]["contact"];
 
 export default function ContactForm({
@@ -27,23 +29,29 @@ export default function ContactForm({
       return;
     }
 
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    if (!serviceId || !templateId || !publicKey) {
+      setNotice(text.sendError);
+      return;
+    }
+
+    const submittedData = {
+      name,
+      email,
+      title: "DP Portfolio - Έχετε ένα νέο μήνυμα!",
+      message,
+    };
+
     setSubmitting(true);
     setNotice("");
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
-      });
-
-      if (!response.ok) {
-        setNotice(response.status === 400 ? text.invalid : text.sendError);
-        return;
-      }
-
+      await emailjs.send(serviceId, templateId, submittedData, publicKey);
       formElement.reset();
       setNotice(text.sent);
-    } catch {
+    } catch (error) {
+      console.error("Email error:", error);
       setNotice(text.sendError);
     } finally {
       setSubmitting(false);

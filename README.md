@@ -16,9 +16,9 @@ To create a production build, run `npm run build`. The build uses webpack so it 
 
 ## Contact form
 
-Add `EMAILJS_SERVICE_ID`, `EMAILJS_TEMPLATE_ID`, and `EMAILJS_PUBLIC_KEY` to `.env.development` for local use and to your host's server environment for production. If private-key authorization is enabled in EmailJS, also set `EMAILJS_PRIVATE_KEY`. See `.env.example` for the variable names. None of these variables should use the `NEXT_PUBLIC_` prefix.
+The contact form sends directly from the browser with `@emailjs/browser`. Add `NEXT_PUBLIC_EMAILJS_SERVICE_ID`, `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID`, and `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY` to `.env.development` for local use and to your host's environment before building for production. See `.env.example` for the variable names. Do not expose the EmailJS private key with a `NEXT_PUBLIC_` prefix.
 
-Paste `templates/emailjs-contact.html` into the EmailJS template's HTML content. Set **To Email** to your own inbox, **Subject** to `{{title}}`, and **Reply-To** to `{{email}}`. Keep **From Email** set to the address of the connected email service. The HTML uses `{{name}}`, `{{email}}`, `{{title}}`, and `{{message}}`, matching the fields sent by `/api/contact`. Put the saved template's actual ID in `EMAILJS_TEMPLATE_ID`.
+Paste `templates/emailjs-contact.html` into the EmailJS template's HTML content. Set **To Email** to your own inbox, **Subject** to `{{title}}`, and **Reply-To** to `{{email}}`. Keep **From Email** set to the address of the connected email service. The HTML uses `{{name}}`, `{{email}}`, `{{title}}`, and `{{message}}`, matching the fields sent by the contact form. Put the saved template's actual ID in `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID`.
 
 ## Learn More
 
