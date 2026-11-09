@@ -9,7 +9,7 @@ type Project = {
   image: string;
   imageAlt: string;
   href: string;
-  preview: "evelyn" | "tsapo" | "transport" | "portfolio" | "tsakmaki";
+  preview: "evelyn" | "transport" | "apoechos" | "myhome" | "tsakmaki";
 };
 
 type Props = {
@@ -37,7 +37,7 @@ export default function ProjectsCarousel({
 
   function relativePosition(index: number) {
     const distance = (index - active + projects.length) % projects.length;
-    return distance > Math.floor(projects.length / 2)
+    return distance > Math.floor((projects.length - 1) / 2)
       ? distance - projects.length
       : distance;
   }
@@ -94,6 +94,7 @@ export default function ProjectsCarousel({
         {projects.map((project, index) => {
           const position = relativePosition(index);
           const isActive = position === 0;
+          const isVisible = Math.abs(position) <= 2;
           const preview = (
             <span className={`project-preview project-preview-${project.preview}`}>
               <Image
@@ -104,34 +105,9 @@ export default function ProjectsCarousel({
                 loading={index === 0 ? "eager" : "lazy"}
                 className="project-preview-image"
               />
-              {project.preview === "evelyn" && (
-                <span className="project-preview-evelyn-ui" aria-hidden="true">
-                  <span className="project-preview-evelyn-brand">
-                    ΕΒΕΛΥΝ ΠΑΤΣΙΟΥΡΑ
-                    <small>ΨΥΧΟΛΟΓΟΣ (BSc)</small>
-                    <small className="project-preview-evelyn-copy">
-                      Παιδοψυχολογία &amp; Ψυχοθεραπεία
-                    </small>
-                  </span>
-                  <span className="project-preview-evelyn-nav">
-                    ΒΙΟΓΡΑΦΙΚΟ&nbsp;&nbsp;&nbsp; ΥΠΗΡΕΣΙΕΣ&nbsp;&nbsp;&nbsp; ΕΠΙΚΟΙΝΩΝΙΑ
-                    <b>ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ</b>
-                  </span>
-                </span>
-              )}
-              {project.preview === "tsapo" && (
-                <span className="project-preview-title project-preview-title-light" aria-hidden="true">
-                  ΤΣΑΠΟ ΑΛΕΞΑΝΤΕΡ
-                </span>
-              )}
               {project.preview === "transport" && (
                 <span className="project-preview-title" aria-hidden="true">
                   TRANSPORTATION SERVICES
-                </span>
-              )}
-              {project.preview === "tsakmaki" && (
-                <span className="project-preview-title project-preview-title-dark" aria-hidden="true">
-                  TSAKMAKI.GR
                 </span>
               )}
             </span>
@@ -142,10 +118,12 @@ export default function ProjectsCarousel({
               key={project.id}
               className="project-slide"
               data-position={position}
+              data-visible={isVisible}
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${isActive ? openLabel : selectLabel}: ${project.title}`}
+              aria-hidden={!isVisible}
               tabIndex={Math.abs(position) <= 1 ? 0 : -1}
               onClick={(event) => {
                 if (!isActive) {

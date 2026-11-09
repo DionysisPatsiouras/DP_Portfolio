@@ -79,7 +79,6 @@ a {
   isolation: isolate;
   width: 100%;
   height: 100svh;
-  min-height: 600px;
   overflow: hidden;
   background:
     radial-gradient(
@@ -344,14 +343,24 @@ summary:focus-visible {
 .page-content {
   position: relative;
   z-index: 1;
-  height: 100%;
+  height: calc(100% - 80px);
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+
+@media (min-width: 701px) {
+  .page-content[data-can-scroll-down] {
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 64px), transparent);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 64px), transparent);
+  }
 }
 
 .about-section {
   width: min(62%, 650px);
-  height: 100%;
+  min-height: 100%;
   margin-left: 28%;
   padding-top: 102px;
+  padding-bottom: 24px;
 }
 
 .about-inner {
@@ -562,6 +571,7 @@ summary:focus-visible {
 
   .page-content {
     height: auto;
+    overflow-y: visible;
   }
 
   .page-signature {
@@ -797,7 +807,7 @@ summary:focus-visible {
 .contact-section {
   /* Four English navigation labels plus the three responsive menu gaps. */
   width: min(calc(278px + clamp(84px, 16.5vw, 210px)), calc(100% - 48px));
-  height: 100%;
+  min-height: 100%;
   margin-inline: auto;
   padding-top: 102px;
 }
@@ -989,7 +999,7 @@ html[lang="el"] .contact-section {
 /* Projects page */
 .projects-section {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   padding-top: 102px;
 }
 
@@ -1016,7 +1026,7 @@ html[lang="el"] .contact-section {
 
 .projects-carousel {
   --project-card-width: min(60vw, 520px);
-  --project-card-height: min(32.6vw, 283px);
+  --project-card-height: min(33.75vw, 292.5px);
   width: 100%;
   margin-top: 36px;
 }
@@ -1076,6 +1086,12 @@ html[lang="el"] .contact-section {
 .project-slide[data-position="-2"] { left: 12%; }
 .project-slide[data-position="2"] { left: 88%; }
 
+.project-slide[data-visible="false"] {
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .project-slide:focus-visible {
   outline: 3px solid var(--color-accent);
   outline-offset: -3px;
@@ -1097,63 +1113,8 @@ html[lang="el"] .contact-section {
   object-fit: cover;
 }
 
-.project-preview-evelyn .project-preview-image { object-position: center 54%; }
-.project-preview-tsapo .project-preview-image { object-position: center; }
+.project-preview-evelyn .project-preview-image { object-fit: contain; }
 .project-preview-transport .project-preview-image { object-position: center 56%; }
-.project-preview-portfolio .project-preview-image { object-position: center 9%; }
-.project-preview-tsakmaki .project-preview-image { object-position: center; }
-
-.project-preview-evelyn-ui {
-  position: absolute;
-  top: 5%;
-  right: 9%;
-  left: 9%;
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  color: #687b67;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(8px, 1.15vw, 12px);
-  line-height: 1.1;
-}
-
-.project-preview-evelyn-brand {
-  display: flex;
-  flex-direction: column;
-  width: 34%;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.project-preview-evelyn-brand small {
-  margin-top: 3px;
-  font-size: 0.62em;
-  font-weight: 400;
-}
-
-.project-preview-evelyn-brand .project-preview-evelyn-copy {
-  margin-top: 13px;
-  max-width: 130px;
-  white-space: normal;
-}
-
-.project-preview-evelyn-nav {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.55em;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.project-preview-evelyn-nav b {
-  padding: 5px 7px;
-  border-radius: 2px;
-  background: #0aab69;
-  color: #fff;
-  font-size: 0.9em;
-}
 
 .project-preview-title {
   position: absolute;
@@ -1167,8 +1128,6 @@ html[lang="el"] .contact-section {
   text-shadow: 0 2px 8px rgb(0 0 0 / 35%);
 }
 
-.project-preview-title-light { color: #fff7e5; }
-.project-preview-title-dark { color: #134264; text-shadow: none; }
 
 .project-caption {
   min-height: 18px;
@@ -1250,7 +1209,7 @@ html[lang="el"] .contact-section {
 
   .projects-carousel {
     --project-card-width: 82vw;
-    --project-card-height: 44.5vw;
+    --project-card-height: 46.125vw;
     margin-top: 36px;
   }
 
@@ -1261,9 +1220,6 @@ html[lang="el"] .contact-section {
 
   .projects-stage { touch-action: pan-y; }
 
-  .project-preview-evelyn-ui { font-size: 8px; }
-  .project-preview-evelyn-nav { font-size: 0.48em; gap: 4px; }
-  .project-preview-evelyn-nav b { padding: 3px 4px; }
   .project-preview-title { font-size: clamp(15px, 5vw, 23px); }
 
   .project-caption { margin-top: 15px; }
@@ -1306,7 +1262,7 @@ html[lang="el"] .contact-section {
 /* Services page */
 .services-section {
   width: min(542px, calc(100% - 112px));
-  height: 100%;
+  min-height: 100%;
   margin-inline: auto;
   padding-top: 102px;
 }
@@ -1510,5 +1466,217 @@ html[lang="el"] .contact-section {
 @media (prefers-reduced-motion: reduce) {
   .services-scroll-controls button {
     transition: none;
+  }
+}
+
+/* Accessibility controls */
+.accessibility-widget {
+  position: fixed;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  left: 20px;
+  z-index: 40;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.accessibility-trigger {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #f2f2f2;
+  color: #050505;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 30%);
+  cursor: pointer;
+}
+
+.accessibility-trigger svg {
+  width: 48px;
+  height: 48px;
+}
+
+.accessibility-trigger:hover {
+  background: #fff;
+}
+
+.accessibility-trigger:focus-visible,
+.accessibility-panel button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.accessibility-panel {
+  width: min(300px, calc(100vw - 40px));
+  max-height: calc(100dvh - 160px);
+  margin-bottom: 12px;
+  padding: 18px;
+  overflow-y: auto;
+  border: 0;
+  border-radius: 14px;
+  background: #092b52;
+  color: #fff;
+  box-shadow: 0 10px 32px rgb(0 0 0 / 40%);
+}
+
+.accessibility-panel h2 {
+  margin: 0 0 14px;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.accessibility-options {
+  display: grid;
+  gap: 4px;
+}
+
+.accessibility-option,
+.accessibility-reset {
+  width: 100%;
+  min-height: 44px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  text-align: left;
+}
+
+.accessibility-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px;
+}
+
+.accessibility-option:hover,
+.accessibility-reset:hover {
+  background: rgb(255 255 255 / 12%);
+}
+
+.accessibility-switch {
+  position: relative;
+  flex: none;
+  width: 37px;
+  height: 22px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  background: #41556e;
+}
+
+.accessibility-switch::after {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  content: "";
+}
+
+.accessibility-option[aria-pressed="true"] .accessibility-switch {
+  background: #ec1882;
+}
+
+.accessibility-option[aria-pressed="true"] .accessibility-switch::after {
+  left: 17px;
+}
+
+.accessibility-reset {
+  margin-top: 12px;
+  padding: 8px;
+  border: 1px solid rgb(255 255 255 / 55%);
+  text-align: center;
+}
+
+html[data-a11y-large-text="true"] .about-copy,
+html[data-a11y-large-text="true"] .contact-intro,
+html[data-a11y-large-text="true"] .projects-intro,
+html[data-a11y-large-text="true"] .services-intro,
+html[data-a11y-large-text="true"] .service-item p,
+html[data-a11y-large-text="true"] .project-caption {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+html[data-a11y-large-text="true"] .about-specialties { font-size: 15px; }
+html[data-a11y-large-text="true"] .about-action { font-size: 18px; }
+html[data-a11y-large-text="true"] .contact-heading,
+html[data-a11y-large-text="true"] .projects-heading,
+html[data-a11y-large-text="true"] .services-heading { font-size: 22px; }
+html[data-a11y-large-text="true"] .contact-field label { font-size: 17px; }
+html[data-a11y-large-text="true"] .contact-input-shell input,
+html[data-a11y-large-text="true"] .contact-message-field textarea,
+html[data-a11y-large-text="true"] .contact-notice { font-size: 16px; }
+html[data-a11y-large-text="true"] .service-item h2 { font-size: 34px; }
+
+html[data-a11y-high-contrast="true"] body {
+  --color-primary: #000;
+  --color-gradient: #000;
+  --color-accent: #ffe500;
+  --color-text: #fff;
+}
+
+html[data-a11y-high-contrast="true"] .about-action-primary,
+html[data-a11y-high-contrast="true"] .contact-submit {
+  color: #000;
+}
+
+html[data-a11y-high-contrast="true"] .about-action-primary:is(:hover, :focus-visible) {
+  color: #fff;
+}
+
+html[data-a11y-high-contrast="true"] .about-action-secondary:is(:hover, :focus-visible) {
+  color: #000;
+}
+
+html[data-a11y-high-contrast="true"] .contact-input-shell,
+html[data-a11y-high-contrast="true"] .contact-message-field textarea {
+  background: #151515;
+}
+
+html[data-a11y-high-contrast="true"] .contact-field-icon,
+html[data-a11y-high-contrast="true"] .contact-field input::placeholder,
+html[data-a11y-high-contrast="true"] .contact-field textarea::placeholder {
+  color: #fff;
+}
+
+html[data-a11y-underline-links="true"] .page-content a,
+html[data-a11y-underline-links="true"] .hero-navigation-link,
+html[data-a11y-underline-links="true"] .language-menu a {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+html[data-a11y-reduced-motion="true"] {
+  scroll-behavior: auto;
+}
+
+html[data-a11y-reduced-motion="true"] *,
+html[data-a11y-reduced-motion="true"] *::before,
+html[data-a11y-reduced-motion="true"] *::after {
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+@media (max-width: 700px) {
+  .accessibility-widget {
+    bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+    left: 16px;
+  }
+
+  .accessibility-panel {
+    max-height: calc(100dvh - 190px);
+  }
+
+  html[data-a11y-large-text="true"] .about-specialties {
+    white-space: normal;
   }
 }

@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 import HeroNavigation from "./hero-navigation";
 import LanguageSwitcher from "./language-switcher";
+import AccessibilityWidget from "./accessibility-widget";
+import ScrollableContent from "./scrollable-content";
 import { isLanguage, translations } from "./translations";
 import "../globals.css";
 
@@ -124,10 +126,9 @@ export default async function RootLayout({
             />
           </header>
 
-          <main id="main" className="page-content">
-            {children}
-          </main>
+          <ScrollableContent>{children}</ScrollableContent>
         </div>
+        <AccessibilityWidget lang={lang} />
       </body>
     </html>
   );
